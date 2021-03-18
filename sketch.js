@@ -36,7 +36,7 @@ document.getElementById("controlSize").addEventListener("change", function () {
 document.getElementById("saveToImage").addEventListener(
   "click",
   function () {
-    downloadCanvas(this, "canvas", "myNumbers.png");
+    downloadCanvas("canvas", "myNumbers.png");
   },
   false
 );
@@ -85,9 +85,11 @@ function createCanvas() {
 
 // DOWNLOAD CANVAS
 
-function downloadCanvas(link, canvas, filename) {
-  link.href = document.getElementById(canvas).toDataURL();
-  link.download = filename;
+function downloadCanvas(canvas, filename) {
+  const a = document.createElement("a");
+  a.href = document.getElementById(canvas).toDataURL();
+  a.download = filename;
+  a.click();
 }
 
 // SAVE FUNCTION
